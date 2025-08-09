@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+import { ClarityProvider } from "@/components/layout/ClarityProvider";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -56,6 +59,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col antialiased relative">
+        <ClarityProvider />
         <Background />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
@@ -63,6 +67,8 @@ export default async function RootLayout({
           <Footer />
           <ScrollToTop />
         </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
